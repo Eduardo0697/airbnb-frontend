@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function Footer(){
     return(
@@ -18,11 +19,11 @@ function Footer(){
                                         <strong>Email:</strong> info@example.com<br/>
                                     </p>
                                     <div className="social-links mt-3">
-                                        <a href="#" className="twitter"><i className="bx bxl-twitter"/></a>
-                                        <a href="#" className="facebook"><i className="bx bxl-facebook"/></a>
-                                        <a href="#" className="instagram"><i className="bx bxl-instagram"/></a>
-                                        <a href="#" className="google-plus"><i className="bx bxl-skype"/></a>
-                                        <a href="#" className="linkedin"><i className="bx bxl-linkedin"/></a>
+                                        <Link className="twitter" to="/"><i className="bx bxl-twitter"/></Link>
+                                        <Link className="facebook" to="/"><i className="bx bxl-facebook"/></Link>
+                                        <Link className="instagram" to="/"><i className="bx bxl-instagram"/></Link>
+                                        <Link className="google-plus" to="/"><i className="bx bxl-skype"/></Link>
+                                        <Link className="linkedin" to="/"><i className="bx bxl-linkedin"/></Link>
                                     </div>
                                 </div>
                             </div>
@@ -30,22 +31,22 @@ function Footer(){
                             <div className="col-lg-2 col-md-6 footer-links">
                                 <h4>Useful Links</h4>
                                 <ul>
-                                    <li><i className="bx bx-chevron-right"/> <a href="#">Home</a></li>
-                                    <li><i className="bx bx-chevron-right"/> <a href="#">About us</a></li>
-                                    <li><i className="bx bx-chevron-right"/> <a href="#">Services</a></li>
-                                    <li><i className="bx bx-chevron-right"/> <a href="#">Terms of service</a></li>
-                                    <li><i className="bx bx-chevron-right"/> <a href="#">Privacy policy</a></li>
+                                    <li><i className="bx bx-chevron-right"/> <Link  to="/">Home</Link></li>
+                                    <li><i className="bx bx-chevron-right"/> <Link  to="/">About us</Link></li>
+                                    <li><i className="bx bx-chevron-right"/> <Link  to="/">Services</Link></li>
+                                    <li><i className="bx bx-chevron-right"/> <Link  to="/">Terms of service</Link></li>
+                                    <li><i className="bx bx-chevron-right"/> <Link  to="/">Privacy policy</Link></li>
                                 </ul>
                             </div>
 
                             <div className="col-lg-3 col-md-6 footer-links">
                                 <h4>Our Services</h4>
                                 <ul>
-                                    <li><i className="bx bx-chevron-right"/> <a href="#">Web Design</a></li>
-                                    <li><i className="bx bx-chevron-right"/> <a href="#">Web Development</a></li>
-                                    <li><i className="bx bx-chevron-right"/> <a href="#">Product Management</a></li>
-                                    <li><i className="bx bx-chevron-right"/> <a href="#">Marketing</a></li>
-                                    <li><i className="bx bx-chevron-right"/> <a href="#">Graphic Design</a></li>
+                                    <li><i className="bx bx-chevron-right"/> <Link  to="/">Web Design</Link></li>
+                                    <li><i className="bx bx-chevron-right"/> <Link  to="/">Web Development</Link></li>
+                                    <li><i className="bx bx-chevron-right"/> <Link  to="/">Product Management</Link></li>
+                                    <li><i className="bx bx-chevron-right"/> <Link  to="/">Marketing</Link></li>
+                                    <li><i className="bx bx-chevron-right"/> <Link  to="/">Page design</Link></li>
                                 </ul>
                             </div>
 
