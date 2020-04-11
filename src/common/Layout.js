@@ -7,7 +7,13 @@ function Layout({children}){
     return(
         <>
             <Navigation isHomeNavigation={false}/>
-            {children}
+            <main id="main">
+                <div className="container" >
+                    <div style={{ padding : "60px" }}>
+                        {children}
+                    </div>
+                </div>
+            </main>
             <NavigationCards/>
             <Footer/>
         </>

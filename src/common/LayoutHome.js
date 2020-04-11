@@ -12,7 +12,6 @@ function LayoutHome({children, background}){
             </Hero>
             <NavigationCards/>
             <Footer/>
-
         </>
     );
 }

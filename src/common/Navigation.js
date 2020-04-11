@@ -28,6 +28,14 @@ function Navigation({isHomeNavigation}){
                             <li>
                                 <Link className={` ${isHomeNavigation ? 'text-light' : 'text-dark'} `} to="/">Recibe huéspedes</Link>
                             </li>
+                            <li className="drop-down"><Link className={` ${isHomeNavigation ? 'text-light' : 'text-dark'} `} to="/">Usuario<i className="bx bx-chevron-down"/></Link>
+                                <ul>
+                                    <li><Link to="/profile">Ver perfil</Link></li>
+                                    <li><Link to="#">Editar Perfil</Link></li>
+                                    <li><Link to="#">Cerrar Sesion</Link></li>
+                                </ul>
+                            </li>
+
                             <li>
                                 <Link className={` ${isHomeNavigation ? 'text-light' : 'text-dark'} `} to="/signup">Registrate</Link>
                             </li>
