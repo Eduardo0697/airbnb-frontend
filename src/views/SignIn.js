@@ -23,7 +23,6 @@ function Login({history}){
         if(data){
             const {login} = data;
             sessionStorage.setItem('userToken', login.token);
-            alert(`Tu JWT+ ${login.token}`);
             history.push('/');
         }
         if(errors) alert('Error on tu login');
