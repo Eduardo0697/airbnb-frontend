@@ -27,12 +27,13 @@ function Explore(){
                         : (error
                                 ? <h1>Error :( {error}</h1>
                                 : data.getProperties.map((property) =>(
-                                    <div className="col-3" key={property._id}>
+                                    <div className="col-3" style={{ height: "300px" }} key={property._id}>
                                         <PropertyPreview
                                             _id={property._id}
                                             location={property.location}
                                             price={property.price}
-                                            title={property.title}/>
+                                            title={property.title}
+                                            photos={property.photos}/>
                                     </div>
                                  ))
                         )
