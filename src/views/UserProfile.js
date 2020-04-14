@@ -1,30 +1,57 @@
 import React from 'react';
 import Layout from "../common/Layout";
-import { Link } from 'react-router-dom';
-import OwlCarousel from 'react-owl-carousel';
+import {Link, useParams} from 'react-router-dom';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import PropertyPreview from "../components/PropertyPreview";
 import Review from "../components/Review";
 import UserCardInfo from "../components/UserCardInfo";
+import gql from "graphql-tag";
+import {useQuery} from "react-apollo-hooks";
+import PropertiesSlider from "../components/PropertiesSlider";
+import authHOC from "../utils/authHOC";
+
+const ME=gql`
+    query me{
+        me{
+            _id
+            first_name
+            password
+            email
+            profile_pic
+            createdAt
+            properties{
+                _id
+                title
+                location
+                photos
+                price
+            }
+        }
+    }
+`;
 
 function UserProfile(){
+    const {data, loading, error} = useQuery(ME,{
+        fetchPolicy: "cache-and-network"
+    });
+
+    if(loading) return <Layout><div className="content py-5">Loading...</div></Layout>
+    if(error) return <Layout><div className="content py-5">Hubo un error, intenta de nuevo {JSON.stringify(error)}</div></Layout>
     return(
         <>
             <Layout>
                 <div className="content py-5">
                     <div className="row">
                         <div className="col-4">
-                            <UserCardInfo name="Michelle"
-                                          isVerified={true}
+                            <UserCardInfo name={data.me.first_name}
+                                          isVerified={data.me.is_verified}
                                           numberReviews={10}
-                                          photo="https://images.unsplash.com/photo-1582971805810-b24306e0afe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"/>
-                        </div>
+                                          photo={data.me.profile_pic}/> </div>
                         <div className="col-8">
                             <div className="row">
                                 <div className="col-10">
-                                    <h1>Hola, me llamo Michelle</h1>
-                                    <h5>Se registro en 2011</h5>
+                                    <h1>Hola, me llamo {data.me.first_name}</h1>
+                                    <h5>Se registro en { data.me.createdAt.split(' ')[3] }</h5>
                                 </div>
                             </div>
                             <hr/>
@@ -60,26 +87,7 @@ function UserProfile(){
                                 </div>
                             </div>
                             <hr/>
-                            <div className="row pt-4">
-                                <h3>Las propiedades de Michelle</h3>
-                                <div className="col-12 py-4">
-                                    <OwlCarousel  loop={true} margin={10} nav={true}  className="owl-theme">
-                                        <div className="item">
-                                            <PropertyPreview _id={1} title="Casa en el lago" price="350" location="Cuernavaca"/>
-                                        </div>
-                                        <div className="item">
-                                            <PropertyPreview _id={2} title="Departamento nuevo" price="300" location="Guadalajara"/>
-                                        </div>
-                                        <div className="item">
-                                            <PropertyPreview _id={3} title="Loft de lujo" price="370" location="Toluca"/>
-                                        </div>
-                                        <div className="item">
-                                            <PropertyPreview _id={4} title="Casa en la playa" price="850" location="Cancun"/>
-                                        </div>
-                                    </OwlCarousel>
-                                </div>
-
-                            </div>
+                            <PropertiesSlider name={data.me.first_name} properties={data.me.properties}/>
                             <hr/>
                             <div className="row pt-4">
                                 <h3>Evaluaciones</h3>
@@ -100,4 +108,4 @@ function UserProfile(){
     );
 }
 
-export default UserProfile;
+export default authHOC(UserProfile);
