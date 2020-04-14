@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import authenticate from "../utils/authenticate";
 
 function Navigation({isHomeNavigation}){
-    const { isAuthenticate, payload} = authenticate();
+    const { isAuthenticated, payload} = authenticate();
     return(
         <header id="header" className={`fixed-top ${isHomeNavigation ? 'position-absolute' : 'bg-light text-dark'} `}>
             <div className="container d-flex">
@@ -27,16 +27,17 @@ function Navigation({isHomeNavigation}){
                             <Link className={` ${isHomeNavigation ? 'text-light' : 'text-dark'} `} to="/properties">Explorar</Link>
                         </li>
                         <li>
-                            <Link className={` ${isHomeNavigation ? 'text-light' : 'text-dark'} `} to="/addProperty">Recibe huéspedes</Link>
+                            <Link className={` ${isHomeNavigation ? 'text-light' : 'text-dark'} `} to="/add/property">Recibe huéspedes</Link>
                         </li>
-                        { isAuthenticate
+                        { isAuthenticated
                             ? (
                                 <>
-                                    <li className="drop-down"><Link className={` ${isHomeNavigation ? 'text-light' : 'text-dark'} `} to="/">Usuario<i className="bx bx-chevron-down"/></Link>
+                                    <li className="drop-down"><Link className={` ${isHomeNavigation ? 'text-light' : 'text-dark'} `} to="/">Hola {payload.first_name}<i className="bx bx-chevron-down"/></Link>
                                         <ul>
                                             <li><Link to="/profile">Ver perfil</Link></li>
                                             <li><Link to="#">Editar Perfil</Link></li>
-                                            <li><Link to="/addProperty">Añadir Propiedad</Link></li>
+                                            <li><Link to="/add/property">Añadir Propiedad</Link></li>
+                                            <li><Link to="/add/property">Mis Propiedades</Link></li>
                                             <li><Link to="/logout">Cerrar Sesion</Link></li>
                                         </ul>
                                     </li>

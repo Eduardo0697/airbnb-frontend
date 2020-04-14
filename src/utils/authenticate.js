@@ -4,15 +4,13 @@ export default function () {
         const [,baseUri] = token.split('.');
         const base64 = baseUri.replace('-','+').replace('_','/');
         const payload = JSON.parse(window.atob(base64));
-        console.log('autenticado');
         return {
-            isAuthenticate : true,
+            isAuthenticated : true,
             payload
         };
     } else{
-        console.log('No autenticado');
         return {
-            isAuthenticate : false,
+            isAuthenticated : false,
             payload: null
         };
     }

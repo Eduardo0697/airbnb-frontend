@@ -3,11 +3,11 @@ import { Redirect } from 'react-router-dom';
 import authenticate from './authenticate';
 
 export default function (WrappedComponent) {
-    const { isAuthenticate } = authenticate();
-    console.log(isAuthenticate);
     return function (props) {
-        return isAuthenticate
-            ? <WrappedComponent {...props}/>
-            : <Redirect to="/login" />
+        const { isAuthenticated } = authenticate();
+        console.log('Autenticado:',isAuthenticated);
+        return isAuthenticated
+            ? <WrappedComponent {...props} />
+            : <Redirect to="/" />
     }
 };

@@ -8,6 +8,8 @@ import SignUp from "./views/SignUp";
 import UserProfile from "./views/UserProfile";
 import AddProperty from "./views/AddProperty";
 import Property from "./views/Property";
+import User from "./views/User";
+
 
 function Logout() {
     sessionStorage.removeItem('userToken');
@@ -22,8 +24,9 @@ function Routes(){
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/signup" component={SignUp}/>
                 <Route exact path="/profile" component={UserProfile}/>
+                <Route exact path="/user/:id" component={User}/>
                 <Route exact path="/property/:id" component={Property}/>
-                <Route exact path="/addProperty" component={ AddProperty }/>
+                <Route exact path="/add/property" component={AddProperty}/>
                 <Route exact path="/logout" component={Logout}/>
                 <Route exact path="/about">
                     <Redirect to="/"/>

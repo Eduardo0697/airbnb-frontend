@@ -7,15 +7,15 @@ const API_URL = process.env.LINK_BACK || "http://localhost:4000";
 
 const httpLink = createHttpLink({uri: API_URL});
 
-const authLink = setContext((_, headers) => {
+const authLink = setContext((_, {headers}) => {
     const token = sessionStorage.getItem('userToken');
     const context = {
         headers: {
             ...headers,
         }
     };
-    if(token) context.headers['authorization'] = `JWT ${token}`;
-    return token;
+    if(token) context.headers['Authorization'] = `JWT ${token}`;
+    return context;
 });
 
 export default new ApolloClient({
