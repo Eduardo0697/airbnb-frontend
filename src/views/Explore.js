@@ -2,6 +2,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { useQuery} from "react-apollo-hooks";
 import Layout from "../common/Layout";
+import PropertyPreview from "../components/PropertyPreview";
 
 const ALL_PROPERTIES=gql`
     query getProperties{
@@ -17,23 +18,27 @@ const ALL_PROPERTIES=gql`
 
 function Explore(){
     const {data, loading, error} = useQuery(ALL_PROPERTIES);
-    if(loading) return <h1>Loading...</h1>
-    if(error) return <h1>Hubo un error</h1>
     return(
         <Layout>
-
-            {
-                data.getProperties.map((property) =>(
-                    <>
-                        <ul>
-                            <li>{property._id}</li>
-                            <li>{property.title}</li>
-                        </ul>
-                    </>
-
-
-                ))
-            }
+            <div className="row py-5">
+                {
+                    loading
+                        ? <h1>Loading</h1>
+                        : (error
+                                ? <h1>Error :( {error}</h1>
+                                : data.getProperties.map((property) =>(
+                                    <div className="col-3" style={{ height: "300px" }} key={property._id}>
+                                        <PropertyPreview
+                                            _id={property._id}
+                                            location={property.location}
+                                            price={property.price}
+                                            title={property.title}
+                                            photos={property.photos}/>
+                                    </div>
+                                 ))
+                        )
+                }
+            </div>
         </Layout>
     );
 };

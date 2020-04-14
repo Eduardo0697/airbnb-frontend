@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 function NavigationCards(){
     return(
@@ -11,7 +12,7 @@ function NavigationCards(){
 
                     <div className="row">
                         <div className="col-6 col-md-4">
-                            <div className="card mb-3" style={{"max-width" : "540px"}}>
+                            <div className="card mb-3" style={{"maxWidth" : "540px"}}>
                                 <div className="row no-gutters">
                                     <div className="col-md-5">
                                         <img
@@ -24,12 +25,12 @@ function NavigationCards(){
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" className="stretched-link"></a>
+                                <Link className="stretched-link" to="/properties"/>
                             </div>
                         </div>
 
                         <div className="col-6 col-md-4">
-                            <div className="card mb-3" style={{"max-width" : "540px"}}>
+                            <div className="card mb-3" style={{"maxWidth" : "540px"}}>
                                 <div className="row no-gutters">
                                     <div className="col-md-5">
                                         <img
@@ -42,12 +43,12 @@ function NavigationCards(){
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" className="stretched-link"></a>
+                                <Link className="stretched-link" to="/properties"/>
                             </div>
                         </div>
 
                         <div className="col-6 col-md-4">
-                            <div className="card mb-3" style={{"max-width" : "540px"}}>
+                            <div className="card mb-3" style={{"maxWidth" : "540px"}}>
                                 <div className="row no-gutters">
                                     <div className="col-md-5">
                                         <img
@@ -60,7 +61,7 @@ function NavigationCards(){
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" className="stretched-link"></a>
+                                <Link className="stretched-link" to="/properties"/>
                             </div>
                         </div>
 
