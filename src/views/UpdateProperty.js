@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Layout from "../common/Layout";
-import AuthHOC from "./../utils/authHOC";
+import authHOC from "./../utils/authHOC";
 
 import Input from "../common/Input";
 import useFormProperty from "../hooks/useFormProperty";
@@ -507,4 +507,4 @@ function UpdateProperty({match, history}) {
 
 }
 
-export default UpdateProperty;
+export default authHOC(UpdateProperty);

@@ -85,6 +85,10 @@ function UserProfile(){
                                         <li>Habla English, Español</li>
                                     </ul>
                                 </div>
+                                <div className="text-right w-100">
+                                    <Link className="btn btn-warning" to="/update/profile">Editar Perfil</Link>
+                                </div>
+
                             </div>
                             <hr/>
                             <PropertiesSlider name={data.me.first_name} properties={data.me.properties} isEditable={true}/>
