@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Layout from "../common/Layout";
 import authHOC from "./../utils/authHOC";
 
@@ -111,7 +111,7 @@ function UpdateProperty({match, history}) {
     };
 
     const catchTypeProperty = event => {
-        const { name, value } = event.target;
+        const {  value } = event.target;
         // setPropertyType( field => ({ ...field, [name]: value}));
         setPropertyType(   value);
         console.log('Propiedad',propertyType);

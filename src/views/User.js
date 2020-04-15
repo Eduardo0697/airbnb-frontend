@@ -1,12 +1,9 @@
 import React from 'react';
-import {Link, useParams} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import Layout from "../common/Layout";
 import { useQuery } from "react-apollo-hooks";
 import gql from 'graphql-tag';
-import HeaderImageProperty from "../components/HeaderImageProperty";
 import UserCardInfo from "../components/UserCardInfo";
-import OwlCarousel from "react-owl-carousel";
-import PropertyPreview from "../components/PropertyPreview";
 import Review from "../components/Review";
 import PropertiesSlider from "../components/PropertiesSlider";
 
@@ -64,7 +61,7 @@ function User(){
                         <hr/>
                         <div className="row pt-4">
                             <div className="col-12">
-                                <p>{ data.getUserById.description}</p>
+                                <p className="text-justify">{ data.getUserById.description}</p>
                             </div>
                             <div className="col-12">
                                 <ul>

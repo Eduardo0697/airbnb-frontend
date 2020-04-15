@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from "../common/Layout";
-import {Link, useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Review from "../components/Review";
@@ -15,10 +15,13 @@ const ME=gql`
         me{
             _id
             first_name
-            password
             email
-            profile_pic
             createdAt
+            is_verified
+            profile_pic
+            description
+            languages
+            nationality
             properties{
                 _id
                 title
@@ -57,32 +60,12 @@ function UserProfile(){
                             <hr/>
                             <div className="row pt-4">
                                 <div className="col-12">
-                                    <p>I love living in Cancun , I love hosting guests and I have won certificates and
-                                        titles for excellence for the quality of my rooms and attention to my guests.
-
-                                        I traded Canada (Edmonton) for Cancun when I was 25 because I had a desire to
-                                        never have to return to " reality" . It works ,we don’t count down to vacation
-                                        anymore and board 20+ planes internationally each year to see new
-                                        “ panorámicas”
-
-                                        So we understand and are sympathetic to your stress and expectations .
-
-                                        Our condominium property is out of our control so we often have to work much
-                                        harder to ensure guests happiness but I’m almost always touched by the reviews .
-                                        The rare time there is a negative aspect in a review I spring to action to
-                                        change or even totally remodel the area in order to prevent it from happening
-                                        again.
-
-                                        For 15 years I worked in all the top luxury hotels as concierge / guest services
-                                        and I learned many things that can help you have a fabulous experience. I'm here
-                                        full time, not an absentee owner.
-
-                                        Sincerely , Michelle </p>
+                                    <p className="text-justify">{data.me.description}</p>
                                 </div>
-                                <div className="col-12">
+                                <div className="col-12 mb-3">
                                     <ul>
-                                        <li>Vive en Cancún, México</li>
-                                        <li>Habla English, Español</li>
+                                        <li>Habla: {data.me.languages}</li>
+                                        <li>Nacionalidad: {data.me.nationality}</li>
                                     </ul>
                                 </div>
                                 <div className="text-right w-100">
