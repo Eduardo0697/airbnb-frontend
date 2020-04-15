@@ -91,7 +91,7 @@ function User(){
                             </div>
                         </div>
                         <hr/>
-                        <PropertiesSlider name={data.getUserById.first_name} properties={data.getUserById.properties}/>
+                        <PropertiesSlider name={data.getUserById.first_name} properties={data.getUserById.properties} isEditable={false}/>
                         <hr/>
                         <div className="row pt-4">
                             <h3>Evaluaciones</h3>

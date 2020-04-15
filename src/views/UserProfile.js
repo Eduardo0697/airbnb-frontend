@@ -87,7 +87,7 @@ function UserProfile(){
                                 </div>
                             </div>
                             <hr/>
-                            <PropertiesSlider name={data.me.first_name} properties={data.me.properties}/>
+                            <PropertiesSlider name={data.me.first_name} properties={data.me.properties} isEditable={true}/>
                             <hr/>
                             <div className="row pt-4">
                                 <h3>Evaluaciones</h3>

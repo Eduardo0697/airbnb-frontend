@@ -53,7 +53,8 @@ const ONE_Property=gql`
 function Property(){
     const { id } = useParams();
     const { data, loading, error } = useQuery(ONE_Property, {
-        variables: { id }
+        variables: { id },
+        fetchPolicy: "cache-and-network"
     });
 
     if(loading) return <Layout><div className="content py-5">Loading...</div></Layout>
