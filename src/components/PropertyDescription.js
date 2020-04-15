@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 
 function PropertyDescription({hostUser,features,services, description}){
     return(

@@ -30,21 +30,21 @@ function useFormProperty(callback, currentInputs= {}){
         event.persist();
         const { name, value } = event.target;
         setInputs(fields =>({ ...fields, [name]: value}));
-        console.log('InputsHook',inputs);
+        //console.log('InputsHook',inputs);
     };
 
     const handleServiceChange = event => {
         event.persist();
         const { name, value } = event.target;
         setServices(fields =>({ ...fields, [name]: JSON.parse(value)}));
-        console.log('ServicesHook',services);
+        // console.log('ServicesHook',services);
     };
 
     const handleFeatureChange = event => {
         event.persist();
         const { name, value } = event.target;
         setFeatures(fields =>({ ...fields, [name]: JSON.parse(value)}));
-        console.log('FeaturesHook',feat);
+        // console.log('FeaturesHook',feat);
     };
 
     const handleSubmit = event => {

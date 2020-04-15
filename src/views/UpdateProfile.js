@@ -5,7 +5,6 @@ import Input from "../common/Input";
 import FigureImage from "../common/FigureImage";
 import gql from "graphql-tag";
 import {useMutation, useQuery} from "react-apollo-hooks";
-import {useParams} from "react-router-dom";
 import useForm from "../hooks/useForm";
 
 

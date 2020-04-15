@@ -4,7 +4,7 @@ import AuthHOC from "./../utils/authHOC";
 
 import Input from "../common/Input";
 import useFormProperty from "../hooks/useFormProperty";
-import {useMutation, UseMutation} from 'react-apollo-hooks';
+import {useMutation} from 'react-apollo-hooks';
 import gql from 'graphql-tag';
 
 const CREATE_PROPERTY=gql`
@@ -42,7 +42,7 @@ function AddProperty({history}) {
             services,
             photos
         };
-        console.log('Objeto formado',object);
+        // console.log('Objeto formado',object);
         const { data, errors} = await sendProperty({variables: { data: {...object }}});
         if(data){
             history.push('/properties');
@@ -81,8 +81,8 @@ function AddProperty({history}) {
     const catchTypeProperty = event => {
         event.persist();
         const { name, value } = event.target;
-        //setpropertyType( field => ({ ...field, [name]: value}));
-        setpropertyType(value);
+        setpropertyType( field => ({ ...field, [name]: value}));
+        //setpropertyType(value);
         console.log('Propiedad',propertyType);
     };
 

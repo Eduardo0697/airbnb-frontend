@@ -1,7 +1,7 @@
 import React from "react";
 import OwlCarousel from "react-owl-carousel";
 import PropertyPreview from "./PropertyPreview";
-import {Link, useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { useMutation } from "react-apollo-hooks";
 import gql from 'graphql-tag';
 

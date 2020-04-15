@@ -132,11 +132,11 @@ function Property(){
                             <div className="review col-6 py-4 my-3">
                                 <div className="row">
                                     <div className="col-2">
-                                        <a href="#">
+                                        <Link to="#">
                                             <img
                                                 src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
                                                 alt="..." className="img-fluid rounded-circle"/>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-6">Uriel <br/> Noviembre 2016</div>
                                 </div>
@@ -150,11 +150,11 @@ function Property(){
                             <div className="review col-6 py-4 my-3">
                                 <div className="row">
                                     <div className="col-2">
-                                        <a href="#">
+                                        <Link to="#">
                                             <img
                                                 src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
                                                 alt="..." className="img-fluid rounded-circle"/>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-6">Uriel <br/> Noviembre 2016</div>
                                 </div>
@@ -168,11 +168,11 @@ function Property(){
                             <div className="review col-6 py-4 my-3">
                                 <div className="row">
                                     <div className="col-2">
-                                        <a href="#">
+                                        <Link to="#">
                                             <img
                                                 src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
                                                 alt="..." className="img-fluid rounded-circle"/>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-6">Uriel <br/> Noviembre 2016</div>
                                 </div>
@@ -186,11 +186,11 @@ function Property(){
                             <div className="review col-6 py-4 my-3">
                                 <div className="row">
                                     <div className="col-2">
-                                        <a href="#">
+                                        <Link to="#">
                                             <img
                                                 src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
                                                 alt="..." className="img-fluid rounded-circle"/>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-6">Uriel <br/> Noviembre 2016</div>
                                 </div>
@@ -204,29 +204,11 @@ function Property(){
                             <div className="review col-6 py-4 my-3">
                                 <div className="row">
                                     <div className="col-2">
-                                        <a href="#">
+                                        <Link to="#">
                                             <img
                                                 src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
                                                 alt="..." className="img-fluid rounded-circle"/>
-                                        </a>
-                                    </div>
-                                    <div className="col-6">Uriel <br/> Noviembre 2016</div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-12">
-                                        La casa es preciosa, Vanessa fue muy hospitalaria, nos hubiera gustado
-                                        quedarnos más días, muy recomendable
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="review col-6 py-4 my-3">
-                                <div className="row">
-                                    <div className="col-2">
-                                        <a href="#">
-                                            <img
-                                                src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-                                                alt="..." className="img-fluid rounded-circle"/>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-6">Uriel <br/> Noviembre 2016</div>
                                 </div>

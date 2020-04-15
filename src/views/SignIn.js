@@ -5,7 +5,7 @@ import useForm from './../hooks/useForm';
 import { useMutation } from 'react-apollo-hooks';
 import gql from 'graphql-tag';
 import Input from "../common/Input";
-import { UncontrolledAlert }  from 'reactstrap'
+
 
 const SignIn = gql`
     mutation login($email: EmailAddress!,$password: String!){
@@ -51,7 +51,7 @@ function Login({history}){
                 <div className="col-8 col-md-5">
                     <div className="card">
                         <div className="card-body">
-                            {/*{mutationLoading && <p>Loading...</p>}*/}
+                            {mutationLoading && <p>...</p>}
                             {mutationError && <p className="text-danger">Vaya, parece que tu email o contraseña no son validos. Porfavor intenta otra vez.</p>}
                             <h1 className="text-dark">Iniciar sesión</h1>
                             <form onSubmit={handleSubmit}>
