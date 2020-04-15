@@ -5,6 +5,7 @@ import useForm from './../hooks/useForm';
 import { useMutation } from 'react-apollo-hooks';
 import gql from 'graphql-tag';
 import Input from "../common/Input";
+import { UncontrolledAlert }  from 'reactstrap'
 
 const SignIn = gql`
     mutation login($email: EmailAddress!,$password: String!){
@@ -16,16 +17,26 @@ const SignIn = gql`
 `;
 
 function Login({history}){
-    const [ sendLogin ] = useMutation(SignIn);
+    const [ sendLogin, { loading: mutationLoading, error: mutationError } ] = useMutation(SignIn);
 
     const catchData = async (inputs) => {
-        const { data, errors} = await sendLogin({variables: {...inputs}});
-        if(data){
-            const {login} = data;
-            sessionStorage.setItem('userToken', login.token);
-            history.push('/');
+        try{
+            const { data, errors } = await sendLogin({
+                variables: {...inputs},
+            });
+
+            console.log('Termine',data,errors)
+            if( errors ) console.log('errors', errors);
+            if(data){
+                const {login} = data;
+                sessionStorage.setItem('userToken', login.token);
+                history.push('/');
+            }
+
+        }catch (error) {
+            console.log(error);
         }
-        if(errors) alert('Error on tu login');
+
     };
 
     const {
@@ -40,6 +51,8 @@ function Login({history}){
                 <div className="col-8 col-md-5">
                     <div className="card">
                         <div className="card-body">
+                            {/*{mutationLoading && <p>Loading...</p>}*/}
+                            {mutationError && <p className="text-danger">Vaya, parece que tu email o contraseña no son validos. Porfavor intenta otra vez.</p>}
                             <h1 className="text-dark">Iniciar sesión</h1>
                             <form onSubmit={handleSubmit}>
                                 <Input
@@ -69,7 +82,6 @@ function Login({history}){
                                 </div>
 
                             </form>
-
                         </div>
                     </div>
                 </div>
