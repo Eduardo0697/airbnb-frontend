@@ -45,7 +45,7 @@ function AddProperty({history}) {
         console.log('Objeto formado',object);
         const { data, errors} = await sendProperty({variables: { data: {...object }}});
         if(data){
-            history.push('/');
+            history.push('/properties');
         }
         if(errors) alert('Error al registrar tu propiedad.');
     };
@@ -79,8 +79,10 @@ function AddProperty({history}) {
     };
 
     const catchTypeProperty = event => {
-      const { name, value } = event.target;
-        setpropertyType( field => ({ ...field, [name]: value}));
+        event.persist();
+        const { name, value } = event.target;
+        //setpropertyType( field => ({ ...field, [name]: value}));
+        setpropertyType(value);
         console.log('Propiedad',propertyType);
     };
 
