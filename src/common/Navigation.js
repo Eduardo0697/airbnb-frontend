@@ -35,9 +35,9 @@ function Navigation({isHomeNavigation}){
                                     <li className="drop-down"><Link className={` ${isHomeNavigation ? 'text-light' : 'text-dark'} `} to="/">Hola {payload.first_name}<i className="bx bx-chevron-down"/></Link>
                                         <ul>
                                             <li><Link to="/profile">Ver perfil</Link></li>
-                                            <li><Link to="#">Editar Perfil</Link></li>
+                                            {/*<li><Link to="#">Editar Perfil</Link></li>*/}
                                             <li><Link to="/add/property">Añadir Propiedad</Link></li>
-                                            <li><Link to="/add/property">Mis Propiedades</Link></li>
+                                            {/*<li><Link to="/add/property">Mis Propiedades</Link></li>*/}
                                             <li><Link to="/logout">Cerrar Sesion</Link></li>
                                         </ul>
                                     </li>
