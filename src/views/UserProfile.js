@@ -9,6 +9,7 @@ import gql from "graphql-tag";
 import {useQuery} from "react-apollo-hooks";
 import PropertiesSlider from "../components/PropertiesSlider";
 import authHOC from "../utils/authHOC";
+import ReservationsProfile from "../components/ReservationsProfile";
 
 const ME=gql`
     query me{
@@ -20,6 +21,18 @@ const ME=gql`
             is_verified
             profile_pic
             description
+            reservationsDone{
+                _id
+                guestNumber
+                startDate
+                endDate
+                property{
+                    _id
+                    photos
+                    price
+                    title
+                }
+            }
             languages
             nationality
             properties{
@@ -82,10 +95,13 @@ function UserProfile(){
                                     <div className="row">
                                         <Review _id={1} timestamp="Octubre 2018" comment="Excelente ubicacion y atencion"/>
                                         <Review _id={2} timestamp="Marzo 2018" comment="Excelente atencion por parte del anfitrion"/>
-                                        <Review _id={3} timestamp="Febrero 2018" comment="No me gusto el lugar, era inseguro"/>
-                                        <Review _id={4} timestamp="Junio 2017" comment="Hospitalidad increible"/>
                                     </div>
                                 </div>
+                            </div>
+                            <hr/>
+                            <div className="row pt-4">
+                                <h3>Mis reservaciones</h3>
+                                <ReservationsProfile reservations={data.me.reservationsDone}/>
                             </div>
                         </div>
                     </div>
