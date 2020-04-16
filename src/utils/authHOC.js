@@ -8,6 +8,6 @@ export default function (WrappedComponent) {
         console.log('Autenticado:',isAuthenticated);
         return isAuthenticated
             ? <WrappedComponent {...props} />
-            : <Redirect to="/" />
+            : <Redirect to="/login" />
     }
 };

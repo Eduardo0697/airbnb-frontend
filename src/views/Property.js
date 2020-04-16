@@ -70,7 +70,7 @@ const CREATE_RESERVE=gql`
 
 
 function Property({history}){
-    const { isAuthenticated, payload} = authenticate();
+    const { isAuthenticated} = authenticate();
     const { id } = useParams();
     const { data, loading, error } = useQuery(ONE_Property, {
         variables: { id },

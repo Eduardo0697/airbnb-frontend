@@ -1,5 +1,4 @@
 import React from "react";
-import Review from "./Review";
 import {Link} from "react-router-dom";
 
 function ReservationsProfile({reservations}){
