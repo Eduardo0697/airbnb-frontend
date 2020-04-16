@@ -1,12 +1,9 @@
 import React from 'react';
-import {Link, useParams} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import Layout from "../common/Layout";
 import { useQuery } from "react-apollo-hooks";
 import gql from 'graphql-tag';
-import HeaderImageProperty from "../components/HeaderImageProperty";
 import UserCardInfo from "../components/UserCardInfo";
-import OwlCarousel from "react-owl-carousel";
-import PropertyPreview from "../components/PropertyPreview";
 import Review from "../components/Review";
 import PropertiesSlider from "../components/PropertiesSlider";
 
@@ -19,6 +16,9 @@ const ONE_USER=gql`
             createdAt
             is_verified
             profile_pic
+            description
+            languages
+            nationality
             properties{
                 _id
                 title
@@ -37,7 +37,7 @@ function User(){
     const { data, loading, error } = useQuery(ONE_USER, {
         variables: { id }
     });
-    const date = new Date();
+
 
     if(loading) return <Layout><div className="content py-5">Loading...</div></Layout>
     if(error) return <Layout>"Hubo un error, intenta de nuevo</Layout>
@@ -61,37 +61,17 @@ function User(){
                         <hr/>
                         <div className="row pt-4">
                             <div className="col-12">
-                                <p>I love living in Cancun , I love hosting guests and I have won certificates and
-                                    titles for excellence for the quality of my rooms and attention to my guests.
-
-                                    I traded Canada (Edmonton) for Cancun when I was 25 because I had a desire to
-                                    never have to return to " reality" . It works ,we don’t count down to vacation
-                                    anymore and board 20+ planes internationally each year to see new
-                                    “ panorámicas”
-
-                                    So we understand and are sympathetic to your stress and expectations .
-
-                                    Our condominium property is out of our control so we often have to work much
-                                    harder to ensure guests happiness but I’m almost always touched by the reviews .
-                                    The rare time there is a negative aspect in a review I spring to action to
-                                    change or even totally remodel the area in order to prevent it from happening
-                                    again.
-
-                                    For 15 years I worked in all the top luxury hotels as concierge / guest services
-                                    and I learned many things that can help you have a fabulous experience. I'm here
-                                    full time, not an absentee owner.
-
-                                    Sincerely , Michelle </p>
+                                <p className="text-justify">{ data.getUserById.description}</p>
                             </div>
                             <div className="col-12">
                                 <ul>
-                                    <li>Vive en Cancún, México</li>
-                                    <li>Habla English, Español</li>
+                                    <li>Habla: {data.getUserById.languages}</li>
+                                    <li>Nacionalidad: {data.getUserById.nationality}</li>
                                 </ul>
                             </div>
                         </div>
                         <hr/>
-                        <PropertiesSlider name={data.getUserById.first_name} properties={data.getUserById.properties}/>
+                        <PropertiesSlider name={data.getUserById.first_name} properties={data.getUserById.properties} isEditable={false}/>
                         <hr/>
                         <div className="row pt-4">
                             <h3>Evaluaciones</h3>

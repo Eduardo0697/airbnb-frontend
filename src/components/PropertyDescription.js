@@ -1,7 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
 
-function PropertyDescription({hostUser,features,services}){
+function PropertyDescription({hostUser,features,services, description}){
     return(
         <>
             <div className="row">
@@ -10,11 +9,11 @@ function PropertyDescription({hostUser,features,services}){
                     <h5>{`${features.guests} huéspedes · ${features.rooms} habitaciones · ${features.beds} camas · ${features.bathrooms} baños completos`}</h5>
                 </div>
                 <div className="col-2">
-                    <Link to={`/user/${hostUser._id}`}>
+                    <a href="#hostUserDescription">
                         <img
                             src={hostUser.profile_pic}
                             alt="..." className="img-fluid rounded-circle"/>
-                    </Link>
+                    </a>
                 </div>
             </div>
             <hr/>
@@ -55,27 +54,23 @@ function PropertyDescription({hostUser,features,services}){
             <hr/>
             <div className="row pt-4">
                 <div className="col-12">
-                    <ul>
+                    <ul className="list-unstyled">
                         <li>
-                            Alojamiento entero
-                            Dispondrás de toda la vivienda (casa) para ti.
+                            <p className="font-weight-bold mb-1">Alojamiento entero</p>
+                            <p className="ml-2">Dispondrás de toda la vivienda (casa) para ti.</p>
                         </li>
                         <li>
-                            Impecable
-                            11 huéspedes recientes han dicho que este alojamiento está impecable.
+                            <p className="font-weight-bold mb-1">Impecable</p>
+                            <p className="ml-2">11 huéspedes recientes han dicho que este alojamiento está impecable.</p>
                         </li>
                         <li>
-                            Alojamiento entero
-                            Dispondrás de toda la vivienda (casa) para ti.
+                            <p className="font-weight-bold mb-1">Ubicación fantástica</p>
+                            <p className="ml-2">El 90 % de los últimos huéspedes han valorado con 5 estrellas la ubicación.</p>
                         </li>
                         <li>
-                            Ubicación fantástica
-                            El 90 % de los últimos huéspedes han valorado con 5 estrellas la ubicación.
-                        </li>
-                        <li>
-                            Fantástico proceso de llegada
-                            El 90 % de los últimos huéspedes han valorado con 5 estrellas el proceso de
-                            llegada.
+                            <p className="font-weight-bold mb-1">Fantástico proceso de llegada</p>
+                            <p className="ml-2">El 90 % de los últimos huéspedes han valorado con 5 estrellas el proceso de
+                            llegada.</p>
                         </li>
                     </ul>
                 </div>
@@ -84,25 +79,11 @@ function PropertyDescription({hostUser,features,services}){
             <div className="row pt-4">
                 <h3>Descripcion</h3>
                 <div className="col-12">
-                    <p>
-                        The world famous Seashell house is a gated property .
-                        Your concierge is available next door to help you with tips and tricks
-                        You will have a private pool, two king beds , kitchenette and BBQ and entire
-                        property, both shells . In shell wifi, air conditioning.
-                        ***If you have 5,6 people we have constructed a third shell with a king bed
-                        and full bath for an additional $99 per night.
-                        Enjoy the rare interior like a celebrity as passers by will seek to look in
-                        with intrigued expressions.
+                    {description
+                        ? (<p className="text-justify">{description }</p>)
+                        : (<p>Lo lamentamos, el propietario no ha provisto una descripcion del lugar</p>)
+                    }
 
-                        El alojamiento
-                        My dear friends Raquel and Eduardo Ocampo designed and built the Seashell
-                        House and for many years no one knew that it was possible to stay here and
-                        fewer knew how to arrange a stay.
-                        I decided it was too special to keep to myself and I invited the world via
-                        AIRBNB !!!
-                        Raquel and daughter Vane are your hosts at this unique island paradise .
-
-                    </p>
                 </div>
 
             </div>
