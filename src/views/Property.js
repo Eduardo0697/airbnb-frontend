@@ -1,11 +1,14 @@
 import React from 'react';
 import {Link, useParams} from 'react-router-dom';
 import Layout from "../common/Layout";
-import { useQuery } from "react-apollo-hooks";
+import { useQuery, useMutation } from "react-apollo-hooks";
 import gql from 'graphql-tag';
 import HeaderImageProperty from "../components/HeaderImageProperty";
 import PropertyDescription from "../components/PropertyDescription";
 import PropertyHostDescription from "../components/PropertyHostDescription";
+import Input from "../common/Input";
+import useForm from "../hooks/useForm";
+import authenticate from "../utils/authenticate";
 const ONE_Property=gql`
     query getOne($id:ID!){
         getPropertyById(id:$id){
@@ -57,13 +60,45 @@ const ONE_Property=gql`
     }
 `;
 
+const CREATE_RESERVE=gql`
+    mutation createReservation($data: ReservationCreateInput){
+        createReservation(data: $data){
+            _id
+        }
+    }
+`;
 
-function Property(){
+
+function Property({history}){
+    const { isAuthenticated, payload} = authenticate();
     const { id } = useParams();
     const { data, loading, error } = useQuery(ONE_Property, {
         variables: { id },
         fetchPolicy: "cache-and-network"
     });
+
+    const [ createReservation ] = useMutation(CREATE_RESERVE);
+
+    const catchData = async (inputs) => {
+        const guestNumber = JSON.parse(inputs.guestNumber);
+        const dataToSend = {
+            property : id,
+            ...inputs,
+            guestNumber
+        };
+        console.log('Data', dataToSend);
+        const { data } = await createReservation({variables:{data: {...dataToSend}} });
+        if(data) {
+            if(data.errors) console.log(data.errors);
+            history.push('/profile');
+        }
+    };
+
+    const{
+        inputs,
+        handleInputChange,
+        handleSubmit
+    } = useForm(catchData);
 
     if(loading) return <Layout><div className="content py-5">Loading...</div></Layout>
     if(error) return <Layout>"Hubo un error, intenta de nuevo</Layout>
@@ -90,21 +125,33 @@ function Property(){
                         <div className="card" style={{ top: "10%", position: "sticky"}}>
                             <div className="card-body">
                                 <h5 className="text-dark">${data.getPropertyById.price} MXN / noche</h5>
-                                <form>
+                                <form onSubmit={handleSubmit}>
                                     <div className="form-row">
                                         <div className="form-group col-md-6">
-                                            <label htmlFor="inputllegada">Llegada</label>
-                                            <input type="date" className="form-control" id="inputllegada"/>
+                                            <Input label="Llegada"
+                                                   value={inputs.startDate}
+                                                   change={handleInputChange}
+                                                   name="startDate"
+                                                   type="date"
+                                                   required={true}/>
                                         </div>
                                         <div className="form-group col-md-6">
-                                            <label htmlFor="inputSalida">Salida</label>
-                                            <input type="date" className="form-control" id="inputSalida"/>
+                                            <Input label="Salida"
+                                                   value={inputs.endDate}
+                                                   change={handleInputChange}
+                                                   name="endDate"
+                                                   type="date"
+                                                   required={true}/>
                                         </div>
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="validationCustom04">Huespedes</label>
-                                        <select className="custom-select" id="validationCustom04" required>
-                                            <option selected disabled value="">Choose...</option>
+                                        <label>Huespedes</label>
+                                        <select className="custom-select"
+                                                value={inputs.guestNumber}
+                                                onChange={handleInputChange}
+                                                name="guestNumber"
+                                                required>
+                                            <option selected disabled>Choose...</option>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -113,9 +160,25 @@ function Property(){
                                     </div>
                                     <div className="form-row ">
                                         <div className="col">
-                                            <button type="submit" className="btn btn-lg btn-block text-light "
-                                                    style={{ backgroundColor: "#ff5a5f" }}>Reservar
-                                            </button>
+                                            {
+                                                isAuthenticated
+                                                    ? (
+                                                        <>
+                                                            <button type="submit" className="btn btn-lg btn-block text-light "
+                                                                    style={{ backgroundColor: "#ff5a5f" }}>Reservar
+                                                            </button>
+                                                        </>
+                                                    )
+                                                    : (
+                                                        <>
+                                                            <button type="submit" className="btn btn-lg btn-block text-light "
+                                                                    style={{ backgroundColor: "#ff5a5f" }} disabled>Reservar
+                                                            </button>
+                                                            <small>Debes iniciar sesion primero</small>
+                                                        </>
+                                                    )
+                                            }
+
                                         </div>
                                     </div>
                                 </form>
