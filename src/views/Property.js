@@ -74,7 +74,7 @@ function Property({history}){
     const { id } = useParams();
     const { data, loading, error } = useQuery(ONE_Property, {
         variables: { id },
-        fetchPolicy: "cache-and-network"
+        fetchPolicy: 'no-cache'
     });
 
     const [ createReservation ] = useMutation(CREATE_RESERVE);
@@ -101,7 +101,7 @@ function Property({history}){
     } = useForm(catchData);
 
     if(loading) return <Layout><div className="content py-5">Loading...</div></Layout>
-    if(error) return <Layout>"Hubo un error, intenta de nuevo</Layout>
+    if(error) return <Layout><div className="content py-5">"Algo salio mal, intenta recargar el sitio :( </div></Layout>
     return(
         <Layout>
             <div className="content py-5">
